@@ -165,7 +165,7 @@ namespace img2cpp
 			writer.WriteLine("<imagefile> [/name <name>] [/jpg|/16bpp]");
 			writer.WriteLine("  [/gfx14|/gfx17] [/be]");
 			writer.WriteLine("  [/resize [<width>][x<height>]]");
-			writer.WriteLine("  [/arduino] [/out: <headerfile>]");
+			writer.WriteLine("  [/arduino] [/out <headerfile>]");
 			writer.WriteLine();
 			writer.WriteLine("  <imagefile>   The image to convert");
 			writer.WriteLine("  <name>        The base name to use in the header");

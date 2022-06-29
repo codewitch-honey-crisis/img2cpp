@@ -210,17 +210,25 @@ namespace img2cpp
 			}
 			if(type!=Img2CppType.Cpp)
 			{
-				writer.Write("using {0}_t = gfx::const_bitmap<gfx::rgb_pixel<", name);
-				if (cvt16bpp)
+				if (!jpg)
 				{
-					writer.Write("16");
-				} else {
-					writer.Write("24");
+					writer.Write("using {0}_t = gfx::const_bitmap<gfx::rgb_pixel<", name);
+					if (cvt16bpp)
+					{
+						writer.Write("16");
+					}
+					else
+					{
+						writer.Write("24");
+					}
+					writer.WriteLine(">>;");
+					writer.WriteLine("const {0}_t {0}({0}_size, {0}_data);", name);
+				} else
+				{
+					writer.WriteLine("gfx::const_buffer_stream {0}({0}_data, sizeof({0}_data));", name);
 				}
-				writer.WriteLine(">>;");
-				writer.WriteLine("const {0}_t {0}({0}_size,{0}_data);",name);
-				
 			}
+
 		}
 	}
 }
